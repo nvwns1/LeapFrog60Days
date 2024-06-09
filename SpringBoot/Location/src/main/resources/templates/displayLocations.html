@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Location</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h2>All Locations: </h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Type</th>
+        <th>Action 1</th>
+        <th>Action 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="location: ${locations}">
+        <td th:text="${location.id}">ID</td>
+        <td th:text="${location.name}">Name</td>
+        <td th:text="${location.code}">Code</td>
+        <td th:text="${location.type}">Type</td>
+        <td><a th:href="@{/deleteLocation(id=${location.id})}">Delete</a></td>
+        <td><a href="">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+<h2><a href="/showCreate">Create Location</a></h2>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Location</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"] {
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            border: none;
+            background-color: #5cb85c;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Create Location</h2>
+    <form action="/saveLocation" method="post">
+        <label>Id: </label>
+        <input type="text" name="id" required/>
+        <br>
+        <label>Name: </label>
+        <input type="text" name="name" required/>
+        <br>
+        <label>Code: </label>
+        <input type="text" name="code" required/>
+        <br>
+        <label>Type: </label>
+        <p>
+            <input type="radio" name="type" value="rural" required/>
+            <label>Rural </label>
+            <br>
+            <input type="radio" name="type" value="urban" required/>
+            <label>Urban </label>
+        </p>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h1 class="message" th:text="${msg}"></h1>
+    <a href="/displayLocations">View All Locations</a>
+</div>
+</body>
+</html>
