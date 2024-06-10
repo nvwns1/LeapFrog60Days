@@ -39,10 +39,11 @@
         <td th:text="${location.code}">Code</td>
         <td th:text="${location.type}">Type</td>
         <td><a th:href="@{/deleteLocation(id=${location.id})}">Delete</a></td>
-        <td><a href="">Edit</a></td>
+        <td><a th:href="@{/editLocation(id=${location.id})}">Edit</a></td>
     </tr>
     </tbody>
 </table>
 <h2><a href="/showCreate">Create Location</a></h2>
+<h1 class="message" th:text="${msg}"></h1>
 </body>
 </html>
