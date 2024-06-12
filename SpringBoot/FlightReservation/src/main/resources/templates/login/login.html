@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+
+<form action="#" th:action="@{/login}" th:object="${loginData}" method="post">
+    <h2>Login Form</h2>
+
+    <p>
+        <label>Email: </label> <br>
+        <input type="text" name="email"/>
+    </p>
+    <p>
+        <label>Password: </label> <br>
+        <input type="text" name="password"/>
+    </p>
+    <input type="submit" value="Login"/>
+</form>
+</body>
+</html>
