@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Operating Airlines</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Date of Departure</th>
+        <th>Estimated Departure Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="flight : ${flights}">
+        <td th:text="${flight.operatingAirlines}">Operating Airlines</td>
+        <td th:text="${flight.departureCity}">Departure City</td>
+        <td th:text="${flight.arrivalCity}">Arrival City</td>
+        <td th:text="${flight.dateOfDeparture}"></td>
+        <td th:text="${flight.estimatedDepartureTime}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -35,7 +35,7 @@ public class UserController {
     public String login(@ModelAttribute("loginData")LoginDTO loginDTO, Model model){
         User user = userRepository.findByEmail(loginDTO.getEmail());
         if(user.getPassword().equals(loginDTO.getPassword())){
-            return "findFlights";
+            return "/findFlights";
         }else{
             model.addAttribute("msg", "Wrong email or password");
         }

@@ -1,27 +1,19 @@
 package org.suman.flightreservation.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
+@Table(name = "flight")
 public class Flight extends AbstractEntity {
-    private String flightName;
     private String operatingAirlines;
     private String departureCity;
     private String arrivalCity;
+    @Temporal(TemporalType.DATE)
     private Date dateOfDeparture;
     private Timestamp estimatedDepartureTime;
-
-    public String getFlightName() {
-        return flightName;
-    }
-
-    public void setFlightName(String flightName) {
-        this.flightName = flightName;
-    }
 
     public String getOperatingAirlines() {
         return operatingAirlines;

@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+    </style>
 </head>
 <body>
-Find Flights
+<form action="#" th:action="@{/findFlights}" th:object="${searchData}" method="post">
+    <p>
+        Find Flights
+    </p>
+    <p>
+        <label>From: </label><br>
+        <input type="text" name="from"/>
+    </p>
+
+    <p>
+        <label>To: </label><br>
+        <input type="text" name="to"/>
+    </p>
+
+<!--    <p>-->
+<!--        <label>Departure date:</label>-->
+<!--        <input type="text" name="departureDate" placeholder="MM-dd-yyyy"/>-->
+<!--    </p>-->
+    <input type="submit" value="Search"/>
+</form>
 
 </body>
 </html>
