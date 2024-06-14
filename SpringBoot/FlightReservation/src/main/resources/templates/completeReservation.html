@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Reservation</title>
+</head>
+<body>
+<h2>Complete Reservation</h2>
+<div class="details">
+    <p>Airlines: <span th:text="${flight.operatingAirlines}">Airlines</span></p>
+    <p>Departure City: <span th:text="${flight.departureCity}">Departure City</span></p>
+    <p>Arrival City: <span th:text="${flight.arrivalCity}">Arrival City</span></p>
+    <p>Date of Departure: <span
+            th:text="${#dates.format(flight.dateOfDeparture, 'MM-dd-yyyy')}">Date of Departure</span></p>
+    <p>Estimated Departure Time: <span th:text="${#dates.format(flight.estimatedDepartureTime, 'hh:mm a')}">Estimated Departure Time</span>
+    </p>
+</div>
+
+<form action="#" th:action="completeReservation" method="post">
+    <h2>Passenger Details:</h2>
+    <p>
+        <label>First Name:</label>
+        <input type="text" name="passengerFirstName"/>
+    </p>
+    <p>
+        <label>Last Name:</label>
+        <input type="text" name="passengerLastName"/>
+    </p>
+    <p>
+        <label>Email:</label>
+        <input type="text" name="passengerEmail"/>
+    </p>
+    <p>
+        <label>Phone:</label>
+        <input type="text" name="passengerPhone"/>
+    </p>
+
+    <h2>Card Details</h2>
+    <p>
+        <label>Name on the card:</label>
+        <input type="text" name="passengerNameOnTheCard"/>
+    </p>
+    <p>
+        <label>Card No:</label>
+        <input type="text" name="cardNumber"/>
+    </p>
+    <p>
+        <label>Expiration Date:</label>
+        <input type="text" name="expirationDate"/>
+    </p>
+    <p>
+        <label>Three Digit Code:</label>
+        <input type="text" name="securityCode"/>
+    </p>
+    <input type="hidden" name="flightId" th:value="${flight.id}" />
+    <input type="submit" value="Confirm">
+</form>
+</body>
+</html>

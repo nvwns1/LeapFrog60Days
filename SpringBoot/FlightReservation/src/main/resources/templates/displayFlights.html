@@ -59,6 +59,7 @@
         <td th:text="${flight.arrivalCity}">Arrival City</td>
         <td th:text="${flight.dateOfDeparture}"></td>
         <td th:text="${flight.estimatedDepartureTime}"></td>
+        <td><a th:href="@{|/showCompleteReservation?flightId=${flight.id}|}">Select</a></td>
     </tr>
     </tbody>
 </table>
