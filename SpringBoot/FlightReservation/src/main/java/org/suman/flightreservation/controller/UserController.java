@@ -26,7 +26,7 @@ public class UserController {
         return "login/login";
     }
 
-    @RequestMapping(value = "/registerUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/showLogin", method = RequestMethod.GET)
     public String registerUser(){
         return "login/login";
     }
@@ -43,8 +43,8 @@ public class UserController {
     }
 
 
-    @RequestMapping("/")
-    public String greet(){
-        return "greet";
-    }
+//    @RequestMapping("/")
+//    public String greet(){
+//        return "greet";
+//    }
 }
