@@ -17,7 +17,6 @@ public class ReservationRestClientImpl implements ReservationRestClient {
     @Override
     public Reservation updateReservation(ReservationUpdateRequest request) {
         RestTemplate restTemplate = new RestTemplate();
-
-        return restTemplate.postForObject("http://localhost:8080/reservation/", request, Reservation.class);
+        return restTemplate.postForObject("http://localhost:8080/reservation", request, Reservation.class);
     }
 }

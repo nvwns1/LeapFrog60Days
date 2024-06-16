@@ -26,17 +26,15 @@
 
 </h2>
 
-<form action="completeCheckIn" method="post">
+<form action="#" th:action="completeCheckIn" method="post">
     <p>
         <label>Enter the number of bags:</label>
-        <input name="numberOfBag" type="text" />
-        <input name="id" th:text="${reservation.id}" type="hidden" />
+        <input name="numberOfBag" type="number" />
+        <input name="reservationId" th:value="${reservation.id}" hidden="true" />
     </p>
     <p>
         <input type="submit" value="Check in" />
     </p>
-
 </form>
-
 </body>
 </html>
