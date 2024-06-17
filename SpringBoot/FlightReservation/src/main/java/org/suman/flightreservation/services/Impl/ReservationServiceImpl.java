@@ -10,6 +10,7 @@ import org.suman.flightreservation.repos.FlightRepository;
 import org.suman.flightreservation.repos.PassengerRepository;
 import org.suman.flightreservation.repos.ReservationRepository;
 import org.suman.flightreservation.services.ReservationService;
+import org.suman.flightreservation.util.PDFGenerator;
 
 import java.util.Optional;
 
@@ -21,6 +22,9 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     private PassengerRepository passengerRepository;
+
+    @Autowired
+    PDFGenerator pdfGenerator;
 
     @Autowired
     private ReservationRepository reservationRepository;
@@ -51,6 +55,8 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setCheckedIn(false);
 
         Reservation savedReservation = reservationRepository.save(reservation);
+
+        pdfGenerator.generateItinerary(savedReservation, "E:\\reservation/"+savedReservation.getId()+".pdf");
 
 
         return savedReservation;
