@@ -1,5 +1,7 @@
 package org.suman.flightreservation.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +24,16 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(ReservationController.class);
+
     @RequestMapping("/showCompleteReservation")
     public String showCompleteReservation(@RequestParam("flightId") Long flightId, Model model) {
         Optional<Flight> flight = flightRepository.findById(flightId);
         if (flight.isPresent()) {
+            LOGGER.info("showCompleteReservation() invoked with " + flightId);
             Flight fl = flight.get();
             model.addAttribute("flight", fl);
+            LOGGER.info("Flight is" + flight);
             return "completeReservation";
         } else {
             model.addAttribute("error", "Flight not found");
@@ -37,7 +43,7 @@ public class ReservationController {
 
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
     public String completeReservation(ReservationRequestDTO reservationRequestDTO, Model model) {
-        System.out.println("running til here");
+        LOGGER.info("completeReservation() " + reservationRequestDTO);
         Reservation reservation = reservationService.bookFlight(reservationRequestDTO);
         model.addAttribute("msg", "Reservation Created Successfully and Id is " + reservation.getId());
         return "reservationConfirmation";

@@ -34,4 +34,12 @@ public class FlightSearchDTO {
 //    public void setDepartureDate(Date departureDate) {
 //        this.departureDate = departureDate;
 //    }
+
+    @Override
+    public String toString() {
+        return "FlightSearchDTO{" +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                '}';
+    }
 }

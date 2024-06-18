@@ -28,4 +28,13 @@ public class ReservationUpdateRequest {
     public void setNumberOfBag(int numberOfBag) {
         this.numberOfBag = numberOfBag;
     }
+
+    @Override
+    public String toString() {
+        return "ReservationUpdateRequest{" +
+                "id=" + id +
+                ", checkedIn=" + checkedIn +
+                ", numberOfBag=" + numberOfBag +
+                '}';
+    }
 }

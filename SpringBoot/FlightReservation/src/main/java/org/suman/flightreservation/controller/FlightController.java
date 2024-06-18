@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 public class FlightController {
-    private static final Logger logger = LoggerFactory.getLogger(FlightController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FlightController.class);
 
 
     @Autowired
@@ -24,18 +24,16 @@ public class FlightController {
 
     @RequestMapping(value = "/findFlights", method = RequestMethod.POST)
     public String findFlights(@ModelAttribute("searchData") FlightSearchDTO flightSearchDTO, Model model) {
-        System.out.println("RUNNING 1 ...");
 
+        LOGGER.info("Inside Find Flights" + flightSearchDTO);
         String from = flightSearchDTO.getFrom();
         String to = flightSearchDTO.getTo();
 //        Date departureDate = flightSearchDTO.getDepartureDate();
-        logger.info("Searching flights from: {} to: {} on date: {}", from, to);
-
 
         List<Flight> flights = flightRepository.findFlights(from, to);
         model.addAttribute("flights", flights);
 
-        System.out.println("RUNNING ...");
+        LOGGER.info("Flight Found are: "+ flights); ;
         return "displayFlights";
     }
 }

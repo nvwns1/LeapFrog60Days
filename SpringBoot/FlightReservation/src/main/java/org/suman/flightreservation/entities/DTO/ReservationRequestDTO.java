@@ -83,4 +83,19 @@ public class ReservationRequestDTO {
     public void setSecurityCode(String securityCode) {
         this.securityCode = securityCode;
     }
+
+    @Override
+    public String toString() {
+        return "ReservationRequestDTO{" +
+                "flightId=" + flightId +
+                ", passengerFirstName='" + passengerFirstName + '\'' +
+                ", passengerLastName='" + passengerLastName + '\'' +
+                ", passengerEmail='" + passengerEmail + '\'' +
+                ", passengerPhone='" + passengerPhone + '\'' +
+                ", passengerNameOnTheCard='" + passengerNameOnTheCard + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", expirationDate='" + expirationDate + '\'' +
+                ", securityCode='" + securityCode + '\'' +
+                '}';
+    }
 }
