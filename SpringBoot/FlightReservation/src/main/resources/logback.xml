@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_DIR" value="E:/reservation"/>
+    <property name="FILE_PREFIX" value="reservation"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--This tells log back which create new log file after it reaches certain limits-->
+        <file>${LOG_DIR}/${FILE_PREFIX}.log</file>
+        <!--Encoder will tell how the log file should look like-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</Pattern>
+        </encoder>
+        <!-- Log file to create every day and it reaches to certain limit-->
+        <!--        naming Patterns  and where to archive that-->
+        <!--        What timing and size policy-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/archived/${FILE_PREFIX}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <timeBasedfileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedfileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
