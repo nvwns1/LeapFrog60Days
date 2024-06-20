@@ -3,6 +3,7 @@ package org.suman.flightreservation.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,9 @@ public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
+
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @RequestMapping("/showReg")
     public String showRegistrationPage() {
         LOGGER.info("Inside showRegistrationPage()");
@@ -28,6 +32,7 @@ public class UserController {
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("user") User user) {
         LOGGER.info("Inside registerUser()" + user);
+        user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
         return "login/login";
     }
@@ -40,7 +45,7 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute("loginData") LoginDTO loginDTO, Model model) {
-        LOGGER.info("Inside login() and the email is "+loginDTO.getEmail());
+        LOGGER.info("Inside login() and the email is " + loginDTO.getEmail());
 
         //Logging level
 //        LOGGER.error("ERROR");
