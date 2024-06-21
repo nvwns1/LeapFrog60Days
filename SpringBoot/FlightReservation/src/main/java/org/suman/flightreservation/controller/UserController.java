@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.suman.flightreservation.entities.DTO.LoginDTO;
 import org.suman.flightreservation.entities.User;
 import org.suman.flightreservation.repos.UserRepository;
+import org.suman.flightreservation.services.SecurityService;
+
+@CrossOrigin(origins = "http://localhost:8080") // Replace with your frontend URL
 
 @Controller
 public class UserController {
@@ -20,8 +24,13 @@ public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
+    @Autowired
+    private SecurityService securityService;
 
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+//    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @RequestMapping("/showReg")
     public String showRegistrationPage() {
@@ -53,8 +62,10 @@ public class UserController {
 //        LOGGER.info("INFO");
 //        LOGGER.debug("DEBUG");
 //        LOGGER.trace("TRACE");
-        User user = userRepository.findByEmail(loginDTO.getEmail());
-        if (user.getPassword().equals(loginDTO.getPassword())) {
+
+        boolean loginResponse = securityService.login(loginDTO.getEmail(), loginDTO.getPassword());
+
+        if (loginResponse) {
             return "/findFlights";
         } else {
             model.addAttribute("msg", "Wrong email or password");
