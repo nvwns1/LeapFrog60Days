@@ -1,5 +1,6 @@
 package org.suman.flightreservation.services.Impl;
 
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class ReservationServiceImpl implements ReservationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReservationServiceImpl.class);
 
     @Override
+    @Transactional
     public Reservation bookFlight(ReservationRequestDTO request) {
         LOGGER.info("Inside bookFlight()");
 
